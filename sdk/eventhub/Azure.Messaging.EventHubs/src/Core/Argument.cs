@@ -113,13 +113,13 @@ namespace Azure.Core
         {
             if (wasDisposed)
             {
-                throw new ObjectDisposedException(targetName, string.Format(CultureInfo.CurrentCulture, Resources.DisposedInstanceCannotPerformOperation, targetName));
+                throw new ObjectDisposedException(targetName, string.Format(CultureInfo.CurrentCulture, Resources.ClosedInstanceCannotPerformOperation, targetName));
             }
         }
 
         /// <summary>
         ///   Ensures that an instance has not been closed, throwing an
-        ///   <see cref="EventHubsObjectClosedException" /> if that invariant is not met.
+        ///   <see cref="EventHubsClientClosedException" /> if that invariant is not met.
         /// </summary>
         ///
         /// <param name="wasClosed"><c>true</c> if the target instance has been closed; otherwise, <c>false</c>.</param>
@@ -129,7 +129,7 @@ namespace Azure.Core
         {
             if (wasClosed)
             {
-                throw new EventHubsObjectClosedException(targetName, string.Format(CultureInfo.CurrentCulture, Resources.DisposedInstanceCannotPerformOperation, targetName));
+                throw new EventHubsClientClosedException(targetName, string.Format(CultureInfo.CurrentCulture, Resources.ClosedInstanceCannotPerformOperation, targetName));
             }
         }
     }

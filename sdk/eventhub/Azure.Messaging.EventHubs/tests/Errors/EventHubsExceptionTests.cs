@@ -54,7 +54,7 @@ namespace Azure.Messaging.EventHubs.Tests
             yield return new object[] { new EventHubsResourceNotFoundException("resource", "message"), false };
             yield return new object[] { new QuotaExceededException("resource", "message"), false };
             yield return new object[] { new ConsumerDisconnectedException("resource", "message"), false };
-            yield return new object[] { new EventHubsObjectClosedException("resource", "message"), false };
+            yield return new object[] { new EventHubsClientClosedException("resource", "message"), false };
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Azure.Messaging.EventHubs.Tests
         {
             EventHubsException instance = constructor();
             Assert.That(instance.IsTransient, Is.EqualTo(expectedIsTransient), $"IsTransient should be set for the { constructorDescription }");
-            Assert.That(instance.ResourceName, Is.EqualTo(expectedResourceName), $"EventHubsNamespace should be set for the { constructorDescription }");
+            Assert.That(instance.EventHubName, Is.EqualTo(expectedResourceName), $"EventHubsNamespace should be set for the { constructorDescription }");
         }
 
         /// <summary>

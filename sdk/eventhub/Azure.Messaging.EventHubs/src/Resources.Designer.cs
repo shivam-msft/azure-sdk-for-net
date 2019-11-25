@@ -79,6 +79,42 @@ namespace Azure.Messaging.EventHubs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot begin processing without {0} handler set..
+        /// </summary>
+        internal static string CannotStartEventProcessorWithoutHandler {
+            get {
+                return ResourceManager.GetString("CannotStartEventProcessorWithoutHandler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Event Hub client responsible for this information.
+        /// </summary>
+        internal static string ClientNeededForThisInformation {
+            get {
+                return ResourceManager.GetString("ClientNeededForThisInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} has already been closed and cannot perform the requested operation..
+        /// </summary>
+        internal static string ClosedConnectionCannotPerformOperation {
+            get {
+                return ResourceManager.GetString("ClosedConnectionCannotPerformOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} has already been closed and cannot perform the requested operation..
+        /// </summary>
+        internal static string ClosedInstanceCannotPerformOperation {
+            get {
+                return ResourceManager.GetString("ClosedInstanceCannotPerformOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The &apos;identifier&apos; parameter exceeds the maximum allowed size of {0} characters..
         /// </summary>
         internal static string ConsumerIdentifierOverMaxValue {
@@ -97,20 +133,20 @@ namespace Azure.Messaging.EventHubs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} has already been disposed and cannot perform the requested operation..
+        ///   Looks up a localized string similar to Unable to create the items needed to communicate with the Event Hubs service..
         /// </summary>
-        internal static string DisposedInstanceCannotPerformOperation {
+        internal static string CouldNotCreateLink {
             get {
-                return ResourceManager.GetString("DisposedInstanceCannotPerformOperation", resourceCulture);
+                return ResourceManager.GetString("CouldNotCreateLink", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not create a subscription for events for Event Hub: &apos;{0}&apos;, partition: &apos;{1}&apos;, consumer group: &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Could not create a reader of events for Event Hub: &apos;{0}&apos;, partition: &apos;{1}&apos;, consumer group: &apos;{2}&apos;..
         /// </summary>
-        internal static string FailedToCreateEventSubscription {
+        internal static string FailedToCreateReader {
             get {
-                return ResourceManager.GetString("FailedToCreateEventSubscription", resourceCulture);
+                return ResourceManager.GetString("FailedToCreateReader", resourceCulture);
             }
         }
         
@@ -138,6 +174,15 @@ namespace Azure.Messaging.EventHubs {
         internal static string InvalidEncoding {
             get {
                 return ResourceManager.GetString("InvalidEncoding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The event position is not valid for filtering.  It must have an offset, sequence number, or enqueued time available to filter against..
+        /// </summary>
+        internal static string InvalidEventPositionForFilter {
+            get {
+                return ResourceManager.GetString("InvalidEventPositionForFilter", resourceCulture);
             }
         }
         
@@ -232,6 +277,15 @@ namespace Azure.Messaging.EventHubs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The event processor is already running and needs to be stopped in order to perform this operation..
+        /// </summary>
+        internal static string RunningEventProcessorCannotPerformOperation {
+            get {
+                return ResourceManager.GetString("RunningEventProcessorCannotPerformOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In order to update the signature, a shared access key must have been provided when the shared access signature was created..
         /// </summary>
         internal static string SharedAccessKeyIsRequired {
@@ -264,6 +318,15 @@ namespace Azure.Messaging.EventHubs {
         internal static string TimeSpanMustBeNonNegative {
             get {
                 return ResourceManager.GetString("TimeSpanMustBeNonNegative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This information is only available when TrackLastEnqueuedEventProperties is set on the Event Hub consumer options..
+        /// </summary>
+        internal static string TrackLastEnqueuedEventPropertiesNotSet {
+            get {
+                return ResourceManager.GetString("TrackLastEnqueuedEventPropertiesNotSet", resourceCulture);
             }
         }
         
@@ -336,33 +399,6 @@ namespace Azure.Messaging.EventHubs {
         internal static string ValueOutOfRange {
             get {
                 return ResourceManager.GetString("ValueOutOfRange", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to The event position is not valid for filtering.  It must have an offset, sequence number, or enqueued time available to filter against..
-        /// </summary>
-        internal static string InvalidEventPositionForFilter {
-            get {
-                return ResourceManager.GetString("InvalidEventPositionForFilter", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Unable to create the items needed to communicate with the Event Hubs service..
-        /// </summary>
-        internal static string CouldNotCreateLink {
-            get {
-                return ResourceManager.GetString("CouldNotCreateLink", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to {0} has already been closed and cannot perform the requested operation..
-        /// </summary>
-        internal static string ClosedConnectionCannotPerformOperation {
-            get {
-                return ResourceManager.GetString("ClosedConnectionCannotPerformOperation", resourceCulture);
             }
         }
     }

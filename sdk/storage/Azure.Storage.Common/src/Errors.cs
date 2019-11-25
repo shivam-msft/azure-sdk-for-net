@@ -27,6 +27,13 @@ namespace Azure.Storage
         public static ArgumentOutOfRangeException MustBeLessThanOrEqualTo(string paramName, long value)
             => new ArgumentOutOfRangeException(paramName, $"Value must be less than or equal to {value}");
 
+        public static ArgumentOutOfRangeException MustBeBetweenInclusive(
+                string paramName,
+                long lower,
+                long upper,
+                long actual)
+            => new ArgumentOutOfRangeException(paramName, $"Value must be between {lower} and {upper} inclusive, not {actual}");
+
         public static ArgumentOutOfRangeException MustBeGreaterThanValueOrEqualToOtherValue(
                 string paramName,
                 long value0,
@@ -48,6 +55,12 @@ namespace Azure.Storage
         public static InvalidOperationException AccountSasMissingData()
             => new InvalidOperationException($"Account SAS is missing at least one of these: ExpiryTime, Permissions, Service, or ResourceType");
 
+        public static InvalidOperationException SasMissingData(string paramName)
+            => new InvalidOperationException($"SAS is missing required parameter: {paramName}");
+
+        public static InvalidOperationException SasDataNotAllowed(string paramName, string paramNameNotAllowed)
+            => new InvalidOperationException($"SAS cannot have the {paramNameNotAllowed} parameter when the {paramName} parameter is present");
+
         public static InvalidOperationException TaskIncomplete()
             => new InvalidOperationException("Task is not completed");
 
@@ -59,6 +72,9 @@ namespace Azure.Storage
 
         public static ArgumentException InvalidResourceType(char s)
             => new ArgumentException($"Invalid resource type: '{s}'");
+
+        public static ArgumentException VersionNotSupported(string paramName)
+           => new ArgumentException($"The version specified by {paramName} is not supported by this library.");
 
         public static ArgumentException AccountMismatch(string accountNameCredential, string accountNameValue)
             => new ArgumentException(string.Format(
@@ -85,12 +101,20 @@ namespace Azure.Storage
         public static AuthenticationException InvalidCredentials(string fullName)
             => new AuthenticationException($"Cannot authenticate credentials with {fullName}");
 
-        public static StorageRequestFailedException ClientRequestIdMismatch(Response response, string echo, string original)
-            => new StorageRequestFailedException(
+        public static RequestFailedException ClientRequestIdMismatch(Response response, string echo, string original)
+            => StorageExceptionExtensions.CreateException(
                     response,
                     $"Response x-ms-client-request-id '{echo}' does not match the original expected request id, '{original}'.");
 
         public static ArgumentException SeekOutsideBufferRange(long index, long inclusiveRangeStart, long exclusiveRangeEnd)
             => new ArgumentException($"Tried to seek ouside buffer range. Gave index {index}, range is [{inclusiveRangeStart},{exclusiveRangeEnd}).");
+
+        public static void VerifyHttpsTokenAuth(Uri uri)
+        {
+            if (uri.Scheme != Constants.Https)
+            {
+                throw new ArgumentException("Cannot use TokenCredential without HTTPS.");
+            }
+        }
     }
 }

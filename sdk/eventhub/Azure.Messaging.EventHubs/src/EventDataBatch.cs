@@ -40,11 +40,11 @@ namespace Azure.Messaging.EventHubs
         ///   The set of options that should be used when publishing the batch.
         /// </summary>
         ///
-        internal SendOptions SendOptions { get; }
+        internal SendEventOptions SendOptions { get; }
 
         /// <summary>
         ///   The transport-specific batch responsible for performing the batch operations
-        ///   in a manner compatible with the associated <see cref="TransportEventHubProducer" />.
+        ///   in a manner compatible with the associated <see cref="TransportProducer" />.
         /// </summary>
         ///
         private TransportEventBatch InnerBatch { get; }
@@ -66,7 +66,7 @@ namespace Azure.Messaging.EventHubs
         /// </remarks>
         ///
         internal EventDataBatch(TransportEventBatch transportBatch,
-                                SendOptions sendOptions)
+                                SendEventOptions sendOptions)
         {
             Argument.AssertNotNull(transportBatch, nameof(transportBatch));
             Argument.AssertNotNull(sendOptions, nameof(sendOptions));

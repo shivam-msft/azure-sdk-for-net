@@ -15,14 +15,14 @@ namespace Azure.Messaging.EventHubs.Authorization
     ///
     /// <seealso cref="Azure.Core.TokenCredential" />
     ///
-    public sealed class EventHubSharedKeyCredential : TokenCredential
+    internal sealed class EventHubSharedKeyCredential : TokenCredential
     {
         /// <summary>
         ///   The name of the shared access key to be used for authorization, as
         ///   reported by the Azure portal.
         /// </summary>
         ///
-        public string SharedAccessKeyName { get; }
+        private string SharedAccessKeyName { get; }
 
         /// <summary>
         ///   The value of the shared access key to be used for authorization, as
@@ -70,10 +70,10 @@ namespace Azure.Messaging.EventHubs.Authorization
         ///
         /// <returns>The token representing the shared access signature for this credential.</returns>
         ///
-        public override Task<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken) => throw new InvalidOperationException(Resources.SharedKeyCredentialCannotGenerateTokens);
+        public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken) => throw new InvalidOperationException(Resources.SharedKeyCredentialCannotGenerateTokens);
 
         /// <summary>
-        /// Coverts to shared access signature credential.
+        ///   Coverts to shared access signature credential.
         /// </summary>
         ///
         /// <param name="eventHubResource">The Event Hubs resource to which the token is intended to serve as authorization.</param>

@@ -10,7 +10,7 @@ namespace Azure.Storage
     /// <summary>
     /// Extension methods to make tests easier to author.
     /// </summary>
-    public static class TestExtensions
+    public static partial class TestExtensions
     {
         /// <summary>
         /// Convert an IAsyncEnumerable into a List to make test verification
@@ -45,6 +45,21 @@ namespace Azure.Storage
                 return item;
             }
             throw new InvalidOperationException();
+        }
+
+        /// <summary>
+        /// Returns a new Uri based on the supplied Uri, but with Http enabled.
+        /// </summary>
+        /// <param name="uri">Source Uri.</param>
+        /// <returns>Http Uri.</returns>
+        public static Uri ToHttp(this Uri uri)
+        {
+            var builder = new UriBuilder(uri)
+            {
+                Scheme = "http",
+                Port = 80
+            };
+            return builder.Uri;
         }
     }
 }

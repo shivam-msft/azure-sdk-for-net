@@ -7,17 +7,11 @@
 		<PackageId>Microsoft.Azure.Management.Network</PackageId>
 		<Description>Provides management capabilities for Network services.</Description>
 		<AssemblyName>Microsoft.Azure.Management.Network</AssemblyName>
-		<Version>19.16.0-preview</Version>
+		<Version>19.17.1-preview</Version>
 		<PackageTags>Microsoft Azure Network management;Network;Network management;</PackageTags>
 		<PackageReleaseNotes>
 		<![CDATA[
-            - Added operation for AvailableServiceAliases
-            - Added property EnableDnsForwarding to VirtualNetworkGateway
-            - Added property Sku to Azure Firewall
-            - Added property BgpCommunities to VirtualNetwork
-            - Added support for Ah protocol in NetworkSecurityGroupRule
-            - Redesign of VirtualWan point-to-site feature
-            - Redesign of PolicySettings in WebApplicationFirewall
+            - Bugfix in PrivateLinkServiceConnectionState: property "ActionRequired" renamed to "ActionsRequired"
 		]]></PackageReleaseNotes>
 	</PropertyGroup>
 	<PropertyGroup>

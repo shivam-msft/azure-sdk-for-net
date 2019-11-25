@@ -92,8 +92,8 @@ namespace Azure.Data.AppConfiguration
 
         private void BuildUriForKvRoute(RequestUriBuilder builder, string key, string label)
         {
-            builder.Reset(_baseUri);
-            builder.AppendPath(KvRoute);
+            builder.Reset(_endpoint);
+            builder.AppendPath(KvRoute, escape: false);
             builder.AppendPath(key);
 
             if (label != null)
@@ -104,8 +104,8 @@ namespace Azure.Data.AppConfiguration
 
         private void BuildUriForLocksRoute(RequestUriBuilder builder, string key, string label)
         {
-            builder.Reset(_baseUri);
-            builder.AppendPath(LocksRoute);
+            builder.Reset(_endpoint);
+            builder.AppendPath(LocksRoute, escape: false);
             builder.AppendPath(key);
 
             if (label != null)
@@ -160,35 +160,28 @@ namespace Azure.Data.AppConfiguration
 
             if (selector.Fields != SettingFields.All)
             {
-                var filter = selector.Fields.ToString().ToLowerInvariant();
+                var filter = selector.Fields.ToString().ToLowerInvariant().Replace("isreadonly", "locked");
                 builder.AppendQuery(FieldsQueryFilter, filter);
             }
 
             if (!string.IsNullOrEmpty(pageLink))
             {
-                builder.AppendQuery("after", pageLink);
+                builder.AppendQuery("after", pageLink, escapeValue: false);
             }
         }
 
         private void BuildUriForGetBatch(RequestUriBuilder builder, SettingSelector selector, string pageLink)
         {
-            builder.Reset(_baseUri);
-            builder.AppendPath(KvRoute);
+            builder.Reset(_endpoint);
+            builder.AppendPath(KvRoute, escape: false);
             BuildBatchQuery(builder, selector, pageLink);
         }
 
         private void BuildUriForRevisions(RequestUriBuilder builder, SettingSelector selector, string pageLink)
         {
-            builder.Reset(_baseUri);
-            builder.AppendPath(RevisionsRoute);
+            builder.Reset(_endpoint);
+            builder.AppendPath(RevisionsRoute, escape: false);
             BuildBatchQuery(builder, selector, pageLink);
-        }
-
-        private static ReadOnlyMemory<byte> Serialize(ConfigurationSetting setting)
-        {
-            var writer = new ArrayBufferWriter<byte>();
-            ConfigurationServiceSerializer.Serialize(setting, writer);
-            return writer.WrittenMemory;
         }
 
         #region nobody wants to see these
@@ -200,7 +193,7 @@ namespace Azure.Data.AppConfiguration
         public override bool Equals(object obj) => base.Equals(obj);
 
         /// <summary>
-        /// Get a hash code for the ConfigurationSetting
+        /// Get a hash code for the ConfigurationSetting.
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => base.GetHashCode();
