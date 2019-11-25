@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.VMwareCloudSimple", "src\Microsoft.Azure.Management.VMwareCloudSimple.csproj", "{1186C01F-B84A-422D-969F-2BD4D64E1081}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.Management.VMwareCloudSimple.Tests", "tests\Microsoft.Azure.Management.VMwareCloudSimple.Tests.csproj", "{05C5EFA3-0B23-4E05-B295-18951F7B2834}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1186C01F-B84A-422D-969F-2BD4D64E1081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1186C01F-B84A-422D-969F-2BD4D64E1081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1186C01F-B84A-422D-969F-2BD4D64E1081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1186C01F-B84A-422D-969F-2BD4D64E1081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05C5EFA3-0B23-4E05-B295-18951F7B2834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05C5EFA3-0B23-4E05-B295-18951F7B2834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05C5EFA3-0B23-4E05-B295-18951F7B2834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05C5EFA3-0B23-4E05-B295-18951F7B2834}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95B33B96-42D0-4A45-8B00-AF4B974B613B}
+	EndGlobalSection
+EndGlobal

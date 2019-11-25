@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(RepoEngPath)/mgmt/AzSdk.test.reference.props" />
+  <PropertyGroup>
+    <PackageId>VMwareCloudSimple.Tests</PackageId>
+    <Description>VMwareCloudSimple.Tests Class Library</Description>
+    <Version>0.1.0-preview</Version>
+    <AssemblyName>VMwareCloudSimple.Tests</AssemblyName>
+    <ProjectGuid>{05C5EFA3-0B23-4E05-B295-18951F7B2834}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ExcludeFromBuild>false</ExcludeFromBuild>
+    <ExcludeFromTest>false</ExcludeFromTest>
+  </PropertyGroup>
+  <!--<PropertyGroup>
+    <TargetFrameworks>$(SdkTargetFx)</TargetFrameworks>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>-->
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="SessionRecords\**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Microsoft.Azure.Management.VMwareCloudSimple.csproj">
+      <!--<Project>{1186c01f-b84a-422d-969f-2bd4d64e1081}</Project>
+      <Name>Microsoft.Azure.Management.VMwareCloudSimple</Name>-->
+    </ProjectReference>
+  </ItemGroup>
+</Project>

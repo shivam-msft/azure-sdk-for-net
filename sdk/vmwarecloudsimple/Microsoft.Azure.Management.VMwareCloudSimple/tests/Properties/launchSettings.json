@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Microsoft.Azure.Management.VMwareCloudSimple.Tests": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "AZURE_TEST_MODE": "Record"
+      }
+    }
+  }
+}
